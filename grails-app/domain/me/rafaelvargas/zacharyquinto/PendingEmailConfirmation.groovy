@@ -8,4 +8,8 @@ class PendingEmailConfirmation {
     static constraints = {
         confirmationToken   blank:false, maxSize:255
     }
+    
+    static Boolean validateToken(String token){
+        PendingEmailConfirmation.where{confirmationToken == token}.count() > 0
+    }
 }

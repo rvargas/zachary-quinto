@@ -3,8 +3,7 @@ package me.rafaelvargas.zacharyquinto
 import spock.lang.Specification
 import org.apache.commons.lang.RandomStringUtils
 
-// Based on http://www.christianoestreich.com/2012/11/domain-constraints-grails-spock-updated/
-abstract class ConstraintUnitSpec extends Specification{
+class ConstraintUnitSpec extends Specification{
 
     String getString(Integer length) {
         RandomStringUtils.randomAlphabetic(length)
@@ -15,7 +14,8 @@ abstract class ConstraintUnitSpec extends Specification{
     }
     
     String getProperties(Object instance){
-        List excludeAttributes = ['dateCreated', 'lastUpdated', 'id']
+        List excludeAttributes = ['dateCreated', 'lastUpdated', 'id', 
+                                  'class', 'errors', 'constraints']
         
         List propertiesWithoutId = instance.properties.keySet().toArray().findAll{String key -> !key.endsWith('Id') && !key.endsWith('Service')}
         Map filteredProperties = instance.properties.subMap(propertiesWithoutId - excludeAttributes)
