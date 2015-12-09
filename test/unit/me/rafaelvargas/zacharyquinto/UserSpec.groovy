@@ -6,7 +6,7 @@ import spock.lang.Unroll
 import spock.lang.Ignore
 
 @TestFor(User)
-class UserSpec extends Specification {
+class UserSpec extends ConstraintUnitSpec{
 
     def setup() {
         new User(username:'rafael@gmail.com', 
@@ -26,7 +26,7 @@ class UserSpec extends Specification {
         assert          !User.count()
         assertEquals    User.count(),0
     }
-    
+    //@Ignore
     void "Username can't be blank"() {
         given: "A user"
             User userInstance = new User(username:'', 
@@ -41,7 +41,7 @@ class UserSpec extends Specification {
             !validationResult
             validationResult == false
     }
-    
+    //@Ignore
     void "Username can't be longer than 100 characters"() {
         given: "A user"
             User userInstance = new User(username: "${'e'*91}@gmail.com",
@@ -56,7 +56,7 @@ class UserSpec extends Specification {
             !validationResult
             validationResult == false
     }
-    
+    //@Ignore
     void "Username must be an email"() {
         given: "A user"
             User userInstance = new User(username: 'notAnEmail', 

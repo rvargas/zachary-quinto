@@ -31,4 +31,7 @@ class RecoverPasswordCommand {
                                 }
     }
     
+    PendingEmailConfirmation pendingEmailConfirmation() {
+        PendingEmailConfirmation.findByConfirmationToken(confirmationToken)
+    }
 }

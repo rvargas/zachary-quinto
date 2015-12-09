@@ -2,13 +2,23 @@ package me.rafaelvargas.zacharyquinto
 
 class RecoverPasswordController {
     
-    static allowedMethods = [index: 'GET', recover:'POST']
+    def recoverPasswordService
+    
+    static allowedMethods = [index:'GET', recover:'POST']
     
     def index() {
         
     }
     
     def recover(RecoverPasswordCommand recoverPasswordCommand){
+        if(!recoverPasswordCommand.validate()) {
+            render view:'recover', model:[recoverPasswordCommand:recoverPasswordCommand]
+            return
+        }
         
+        recoverPasswordService.recovery(recoverPasswordCommand)
+        
+        flash.message = 'Su contraseña ha sido actualizada'
+        redirect action:'index'
     }
 }
