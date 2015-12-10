@@ -6,7 +6,7 @@ class PendingEmailConfirmation {
     String confirmationToken
     
     static constraints = {
-        confirmationToken   blank:false, maxSize:255
+        confirmationToken   blank:false, maxSize:255, unique:true
     }
     
     static Boolean validateToken(String token){

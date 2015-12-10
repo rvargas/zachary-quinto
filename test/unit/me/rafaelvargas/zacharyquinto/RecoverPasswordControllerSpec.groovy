@@ -55,7 +55,7 @@ class RecoverPasswordControllerSpec extends Specification {
             controller.recover()
         
         then: "Recover is rendered"
-            view == '/recoverPassword/recover'
+            view == '/recoverPassword/index'
         and: "RecoverPasswordCommand is sent in model"
             model.recoverPasswordCommand
             model.recoverPasswordCommand.confirmationToken == 'WRONGTOKEN'

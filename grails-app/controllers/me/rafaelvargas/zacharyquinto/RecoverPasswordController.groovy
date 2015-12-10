@@ -12,7 +12,7 @@ class RecoverPasswordController {
     
     def recover(RecoverPasswordCommand recoverPasswordCommand){
         if(!recoverPasswordCommand.validate()) {
-            render view:'recover', model:[recoverPasswordCommand:recoverPasswordCommand]
+            render view:'index', model:[recoverPasswordCommand:recoverPasswordCommand]
             return
         }
         
