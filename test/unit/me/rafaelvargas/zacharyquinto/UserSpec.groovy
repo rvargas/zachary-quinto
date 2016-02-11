@@ -6,7 +6,7 @@ import spock.lang.Unroll
 import spock.lang.Ignore
 
 @TestFor(User)
-class UserSpec extends ConstraintUnitSpec{
+class UserSpec extends ConstraintUnitSpec {
 
     def setup() {
         new User(username:'rafael@gmail.com', 
@@ -26,7 +26,7 @@ class UserSpec extends ConstraintUnitSpec{
         assert          !User.count()
         assertEquals    User.count(),0
     }
-    //@Ignore
+    @Ignore
     void "Username can't be blank"() {
         given: "A user"
             User userInstance = new User(username:'', 
@@ -41,7 +41,7 @@ class UserSpec extends ConstraintUnitSpec{
             !validationResult
             validationResult == false
     }
-    //@Ignore
+    @Ignore
     void "Username can't be longer than 100 characters"() {
         given: "A user"
             User userInstance = new User(username: "${'e'*91}@gmail.com",
@@ -56,7 +56,7 @@ class UserSpec extends ConstraintUnitSpec{
             !validationResult
             validationResult == false
     }
-    //@Ignore
+    @Ignore
     void "Username must be an email"() {
         given: "A user"
             User userInstance = new User(username: 'notAnEmail', 
@@ -121,16 +121,16 @@ class UserSpec extends ConstraintUnitSpec{
             userInstance.errors.errorCount == expectedErrorCount
         
         where:
-            username                |password           |firstName  |lastName       |expectedValidation |expectedErrorCount |reason
-            "rv@manoderecha.mx"     |"mysecretpassword" |"Rafael"   |"Vargas"       |true               |0                  |"All fields are valid :-)"
-            null                    |null               |null       |null           |false              |4                  |"All fields are invalid :-("
+            username                |password           |firstName  |lastName       |expectedValidation |expectedErrorCount
+            "rv@manoderecha.mx"     |"mysecretpassword" |"Rafael"   |"Vargas"       |true               |0                  
+            null                    |null               |null       |null           |false              |4                  
             
             // Username
-            null                    |"mysecretpassword" |"Rafael"   |"Vargas"       |false              |1                  |"Username is null"
-            ""                      |"mysecretpassword" |"Rafael"   |"Vargas"       |false              |1                  |"Username is blank"
-            "rv"                    |"mysecretpassword" |"Rafael"   |"Vargas"       |false              |1                  |"Username is not an email"
-            "${'e'*91}@gmail.com"   |"mysecretpassword" |"Rafael"   |"Vargas"       |false              |1                  |"Username is longer than maxSize (100)"
-            "rafael@gmail.com"      |"mysecretpassword" |"Rafael"   |"Vargas"       |false              |1                  |"Username is not unique"
+            null                    |"mysecretpassword" |"Rafael"   |"Vargas"       |false              |1                  
+            ""                      |"mysecretpassword" |"Rafael"   |"Vargas"       |false              |1                  
+            "rv"                    |"mysecretpassword" |"Rafael"   |"Vargas"       |false              |1                  
+            "${'e'*91}@gmail.com"   |"mysecretpassword" |"Rafael"   |"Vargas"       |false              |1                  
+            "rafael@gmail.com"      |"mysecretpassword" |"Rafael"   |"Vargas"       |false              |1                  
         
     }
     
@@ -301,7 +301,7 @@ class UserSpec extends ConstraintUnitSpec{
      *
      *
      */
-    @Ignore
+    //@Ignore
     @Unroll("Test '#reason' resulted #expectedValidation with #expectedErrorCount errors")
     Void "Validate User constraints but extending ConstraintUnitTest"(){
         

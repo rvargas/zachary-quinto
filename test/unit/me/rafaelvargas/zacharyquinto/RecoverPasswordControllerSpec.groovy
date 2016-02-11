@@ -22,7 +22,6 @@ class RecoverPasswordControllerSpec extends Specification {
     }
 
     //recover
-    @Ignore
     @Unroll("Recover: Method #method have response code #resultExpected")
     void "Recover action is only accesible with POST method"(){
         setup: "http method"
@@ -42,7 +41,6 @@ class RecoverPasswordControllerSpec extends Specification {
             "ANYTHING"  ||405
     }
     
-    @Ignore
     void "Recover action with invalid RecoverPasswordCommand"(){
         given: "Required parameters"
             controller.params.confirmationToken = 'WRONGTOKEN'
@@ -68,7 +66,6 @@ class RecoverPasswordControllerSpec extends Specification {
             PendingEmailConfirmation.first().confirmationToken == 'Token'
     }
     
-    @Ignore
     void "Recover action with valid RecoverPasswordCommand"(){
         given: "Required parameters"
             controller.params.confirmationToken = 'Token'

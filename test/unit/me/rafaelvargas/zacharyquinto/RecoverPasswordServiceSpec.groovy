@@ -20,7 +20,7 @@ class RecoverPasswordServiceSpec extends Specification {
         assert  PendingEmailConfirmation.count() == 1
     }
     
-    @Ignore
+    //@Ignore
     void "Validate recovery method"() {
         given: "A RecoverPasswordCommand instance"
             RecoverPasswordCommand recoverPasswordCommand = new RecoverPasswordCommand(confirmationToken:'Token',

@@ -29,7 +29,6 @@ class RecoverPasswordCommandSpec extends ConstraintUnitSpec{
         assert  PendingEmailConfirmation.count() == 0
     }
     
-    @Ignore
     @Unroll("Test '#reason' resulted #expectedValidation with #expectedErrorCount errors")
     void "Validate constraints"(){
         given: "A RecoverPasswordCommand"
