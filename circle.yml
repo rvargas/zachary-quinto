@@ -9,7 +9,7 @@ test:
     - ./grailsw compile
     - ./grailsw clean
   override:
-    - ./grailsw test-app unit -coverage
+    - ./grailsw test-app :unit -coverage
   post:
     - ./grailsw prod war
     - cp target/*.war $CIRCLE_ARTIFACTS
