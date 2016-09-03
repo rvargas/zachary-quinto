@@ -13,4 +13,5 @@ test:
   post:
     - ./grailsw prod war
     - cp target/*.war $CIRCLE_ARTIFACTS
-    - cp target/test-reports/*.xml $CIRCLE_TEST_REPORTS
+    - mkdir -p $CIRCLE_TEST_REPORTS/junit/
+    - find . -type f -regex ".*/target/test-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
