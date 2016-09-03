@@ -1,0 +1,16 @@
+machine:
+  java:
+    version: openjdk7
+dependencies:
+  override:
+    - ./grailsw refresh-dependencies
+test:
+  pre:
+    - ./grailsw compile
+    - ./grailsw clean
+  override:
+    - ./grailsw test-app unit -coverage
+  post:
+    - ./grailsw prod war
+    - cp target/*.war $CIRCLE_ARTIFACTS
+    - cp target/test-reports/*.xml $CIRCLE_TEST_REPORTS
