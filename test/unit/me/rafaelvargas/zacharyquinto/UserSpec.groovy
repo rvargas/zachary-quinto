@@ -301,7 +301,7 @@ class UserSpec extends ConstraintUnitSpec {
      *
      *
      */
-    
+    //@Ignore
     @Unroll("Test '#reason' resulted #expectedValidation with #expectedErrorCount errors")
     Void "Validate User constraints but extending ConstraintUnitTest"(){
         
@@ -322,7 +322,7 @@ class UserSpec extends ConstraintUnitSpec {
         
         where:
             username                |password           |firstName      |lastName       |expectedValidation |expectedErrorCount |reason
-            null                    |"mysecretpassword" |"Rafael"       |"Vargas"       |true               |0                  |"All fields are valid :-)"
+            "rv@manoderecha.mx"     |"mysecretpassword" |"Rafael"       |"Vargas"       |true               |0                  |"All fields are valid :-)"
             null                    |null               |null           |null           |false              |4                  |"All fields are invalid :-("
             
             // Username
